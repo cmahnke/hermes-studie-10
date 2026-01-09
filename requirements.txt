@@ -1,0 +1,6 @@
+requests
+lxml
+geojson
+spacy
+numpy
+scikit-learn

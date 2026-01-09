@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "removeComments": true,
+    "allowUnreachableCode": false,
+    "noImplicitReturns": true,
+    "preserveConstEnums": true,
+    "noImplicitThis": true,
+    "strictBindCallApply": true,
+    "sourceMap": true,
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "esModuleInterop": false,
+    "resolveJsonModule": true,
+    "strict": false,
+    "target": "es2020",
+    "skipLibCheck": true,
+    "lib": ["dom", "es2020"],
+    "typeRoots": ["./node_modules/@types"],
+    "paths": {
+      "plotly.js-dist": ["./node_modules/@types/plotly.js"]
+    }
+  },
+  "include": ["assets/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}

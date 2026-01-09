@@ -1,0 +1,20 @@
+{
+  "extends": ["stylelint-config-standard-scss", "stylelint-prettier/recommended"],
+  "rules": {
+    "block-no-empty": null,
+    "declaration-empty-line-before": null,
+    "rule-empty-line-before": null,
+    "at-rule-empty-line-before": null,
+    "comment-empty-line-before": null,
+    "comment-whitespace-inside": null,
+    "font-family-no-missing-generic-family-keyword": [true, { "severity": "warning" }],
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": "font-smooth"
+      }
+    ],
+    "property-no-vendor-prefix": null,
+    "no-descending-specificity": [true, { "severity": "warning" }]
+  }
+}

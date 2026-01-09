@@ -1,0 +1,72 @@
+name: Publish on GitHub pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  packages: write
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHON_VERSION: '3.13'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6.1.0
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Set up Python
+        uses: actions/setup-python@v6.1.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install required dependencies
+        run: |
+          pip install -r requirements.txt
+          python -m spacy download de_core_news_lg
+
+      - name: Install Node dependencies
+        working-directory: ./site
+        run: |
+          npm i --force
+
+      - name: Get data
+        run: |
+          python scripts/downloader.py
+
+      - name: Lint and Validate JSON
+        working-directory: ./site
+        run: |
+          npm run lint
+          npm run tsc
+
+      - name: Build site
+        working-directory: ./site
+        run: |
+          npx vite build
+
+      - name: Copy generated files
+        run: |
+          cp ./site/assets/json/*.json ./site/dist
+
+      - name: Deploy site
+        uses: peaceiris/actions-gh-pages@v4.0.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site/dist
+          force_orphan: true
