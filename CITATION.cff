@@ -1,0 +1,27 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Kartenvisualisierung der Metadaten der Kirchhoff-Sammlung
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Chrisitian
+    family-names: Mahnke
+    orcid: 'https://orcid.org/0009-0003-1361-4159'
+    affiliation: Universität Göttingen
+    email: mahnke@kustodie.uni-goettingen.de
+repository-code: 'https://github.com/cmahnke/hermes-studie-10'
+abstract: >-
+  Es handelt sich um eine Visualisierung von Metadaten aus
+  dem Sammlungsportal der Universität Göttingen für die
+  Kirchhoff-Sammlung. Diese werden auf einer Weltkarte und
+  als Wortwolke dargestellt.
+keywords:
+  - Karte
+  - Visualisierung
+  - Wortwolke
+license: CC-BY-NC-4.0
+
